@@ -1,0 +1,2378 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Lengkap Fitur — SIInventaris SMAN 1 Jorong</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --green-dark: #1a4731;
+            --green: #2d6a4f;
+            --green-light: #40916c;
+            --green-pale: #f0fff4;
+            --blue: #2b6cb0;
+            --blue-pale: #ebf8ff;
+            --yellow: #d69e2e;
+            --yellow-pale: #fffbeb;
+            --red: #c53030;
+            --red-pale: #fff5f5;
+            --purple: #6b46c1;
+            --purple-pale: #faf5ff;
+            --teal: #2c7a7b;
+            --teal-pale: #e6fffa;
+            --gray: #4a5568;
+            --gray-light: #e2e8f0;
+            --gray-pale: #f7fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.65
+        }
+
+        /* ── NAVBAR STICKY ── */
+        .topnav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: var(--green-dark);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .3)
+        }
+
+        .topnav .brand {
+            font-weight: 700;
+            font-size: 1.05em
+        }
+
+        .topnav nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .topnav nav a {
+            color: rgba(255, 255, 255, .8);
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: .83em;
+            transition: background .2s
+        }
+
+        .topnav nav a:hover {
+            background: rgba(255, 255, 255, .2);
+            color: #fff
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #1a4731 0%, #2d6a4f 55%, #52b788 100%);
+            color: #fff;
+            text-align: center;
+            padding: 70px 32px 60px
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 10px
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            opacity: .85;
+            max-width: 680px;
+            margin: 0 auto 28px
+        }
+
+        .badge-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .hbadge {
+            background: rgba(255, 255, 255, .18);
+            border: 1px solid rgba(255, 255, 255, .4);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: .88em
+        }
+
+        .rev-badge {
+            background: #f6ad55;
+            color: #744210;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: .88em;
+            font-weight: 700
+        }
+
+        /* ── LAYOUT ── */
+        .wrap {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 40px 24px
+        }
+
+        /* ── LEGEND BOX ── */
+        .legend {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+            padding: 24px 28px;
+            margin-bottom: 48px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .legend-title {
+            font-weight: 700;
+            color: var(--green-dark);
+            margin-right: 8px
+        }
+
+        .leg-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .9em
+        }
+
+        .leg-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            flex-shrink: 0
+        }
+
+        /* ── SECTION HEADER ── */
+        .sec-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--green-dark);
+            color: #fff;
+            border-radius: 14px;
+            padding: 18px 28px;
+            margin: 56px 0 28px
+        }
+
+        .sec-icon {
+            font-size: 2em
+        }
+
+        .sec-header h2 {
+            font-size: 1.35em;
+            font-weight: 700;
+            margin-bottom: 2px
+        }
+
+        .sec-header p {
+            font-size: .9em;
+            opacity: .8
+        }
+
+        /* ── ROLE SECTION ── */
+        .role-section {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+            margin-bottom: 14px;
+            overflow: hidden
+        }
+
+        .role-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--gray-light);
+            user-select: none
+        }
+
+        .role-header:hover {
+            background: var(--gray-pale)
+        }
+
+        .role-header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .role-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            flex-shrink: 0
+        }
+
+        .role-header h3 {
+            font-size: 1.05em;
+            font-weight: 700
+        }
+
+        .role-header p {
+            font-size: .85em;
+            color: var(--gray)
+        }
+
+        .toggle-arrow {
+            font-size: 1.2em;
+            color: var(--gray);
+            transition: transform .3s
+        }
+
+        .role-body {
+            display: none;
+            padding: 20px 24px 24px
+        }
+
+        .role-body.open {
+            display: block
+        }
+
+        .toggle-arrow.open {
+            transform: rotate(90deg)
+        }
+
+        /* ── FEATURE CARD ── */
+        .feature-card {
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden
+        }
+
+        .feature-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--gray-pale);
+            border-bottom: 1px solid var(--gray-light)
+        }
+
+        .fc-icon {
+            font-size: 1.4em
+        }
+
+        .fc-title {
+            font-weight: 700;
+            font-size: 1em
+        }
+
+        .fc-sub {
+            font-size: .83em;
+            color: var(--gray)
+        }
+
+        .feature-card-body {
+            padding: 16px 18px
+        }
+
+        /* ── REVISION BADGE ── */
+        .tag-rev {
+            display: inline-block;
+            background: #f6ad55;
+            color: #744210;
+            border: 1px solid #e9994a;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: .76em;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+            white-space: nowrap
+        }
+
+        .tag-new {
+            display: inline-block;
+            background: #9ae6b4;
+            color: #22543d;
+            border: 1px solid #68d391;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: .76em;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+            white-space: nowrap
+        }
+
+        .tag-enhanced {
+            display: inline-block;
+            background: #90cdf4;
+            color: #1a365d;
+            border: 1px solid #63b3ed;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: .76em;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+            white-space: nowrap
+        }
+
+        /* ── FLOW DIAGRAM ── */
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+            margin: 12px 0
+        }
+
+        .flow-step {
+            background: #fff;
+            border: 2px solid var(--gray-light);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: .85em;
+            text-align: center;
+            min-width: 110px;
+            flex: 1;
+            max-flex: 180px
+        }
+
+        .flow-step .snum {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: var(--green);
+            color: #fff;
+            border-radius: 50%;
+            font-size: .7em;
+            font-weight: 700;
+            line-height: 20px;
+            margin: 0 auto 5px
+        }
+
+        .flow-step .slabel {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: .88em
+        }
+
+        .flow-step .ssub {
+            font-size: .78em;
+            color: var(--gray);
+            margin-top: 2px
+        }
+
+        .farrow {
+            color: var(--green);
+            font-size: 1.3em;
+            font-weight: 700;
+            padding: 0 2px
+        }
+
+        /* ── INFO GRID ── */
+        .igrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+            gap: 12px;
+            margin: 12px 0
+        }
+
+        .icard {
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: .88em
+        }
+
+        .icard .ititle {
+            font-weight: 700;
+            margin-bottom: 4px
+        }
+
+        .icard .ibody {
+            color: #4a5568;
+            font-size: .87em
+        }
+
+        /* ── PILL / BADGE ── */
+        .pill {
+            display: inline-block;
+            padding: 2px 9px;
+            border-radius: 10px;
+            font-size: .79em;
+            font-weight: 600
+        }
+
+        .p-green {
+            background: #c6f6d5;
+            color: #276749
+        }
+
+        .p-blue {
+            background: #bee3f8;
+            color: #2a4365
+        }
+
+        .p-yellow {
+            background: #fefcbf;
+            color: #744210
+        }
+
+        .p-red {
+            background: #fed7d7;
+            color: #742a2a
+        }
+
+        .p-gray {
+            background: var(--gray-light);
+            color: #4a5568
+        }
+
+        .p-orange {
+            background: #feebc8;
+            color: #7b341e
+        }
+
+        /* ── CALLOUT ── */
+        .callout {
+            border-left: 4px solid;
+            padding: 11px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0;
+            font-size: .9em
+        }
+
+        .c-green {
+            border-color: #38a169;
+            background: #f0fff4
+        }
+
+        .c-yellow {
+            border-color: #d69e2e;
+            background: #fffbeb
+        }
+
+        .c-red {
+            border-color: #e53e3e;
+            background: #fff5f5
+        }
+
+        .c-blue {
+            border-color: #3182ce;
+            background: #ebf8ff
+        }
+
+        .callout b {
+            display: block;
+            margin-bottom: 3px
+        }
+
+        /* ── TABLE ── */
+        .rt {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .88em;
+            margin: 12px 0
+        }
+
+        .rt th {
+            background: var(--green);
+            color: #fff;
+            padding: 9px 13px;
+            text-align: left
+        }
+
+        .rt td {
+            padding: 8px 13px;
+            border-bottom: 1px solid var(--gray-light)
+        }
+
+        .rt tr:last-child td {
+            border-bottom: none
+        }
+
+        .rt tr:nth-child(even) td {
+            background: var(--gray-pale)
+        }
+
+        /* ── BIG MASTER TABLE ── */
+        .master-table-wrap {
+            overflow-x: auto
+        }
+
+        .master-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .83em
+        }
+
+        .master-table th {
+            background: var(--green-dark);
+            color: #fff;
+            padding: 9px 11px;
+            text-align: center;
+            white-space: nowrap
+        }
+
+        .master-table th:first-child {
+            text-align: left
+        }
+
+        .master-table td {
+            padding: 8px 11px;
+            border-bottom: 1px solid var(--gray-light);
+            vertical-align: middle
+        }
+
+        .master-table tr:nth-child(even) td {
+            background: var(--gray-pale)
+        }
+
+        .master-table td:not(:first-child) {
+            text-align: center
+        }
+
+        .sec-row td {
+            background: #d1fae5 !important;
+            font-weight: 700;
+            color: var(--green-dark)
+        }
+
+        .check {
+            color: #276749;
+            font-size: 1em
+        }
+
+        .cross {
+            color: #999;
+            font-size: .9em
+        }
+
+        /* ── STATUS BOXES ── */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 12px;
+            margin: 12px 0
+        }
+
+        .sbox {
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            border: 2px solid
+        }
+
+        .sbox .sbig {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 4px
+        }
+
+        .sbox .slabel {
+            font-size: .85em;
+            font-weight: 600
+        }
+
+        .sbox .sdesc {
+            font-size: .78em;
+            margin-top: 4px;
+            opacity: .8
+        }
+
+        .sbox-red {
+            background: #fff5f5;
+            border-color: #fc8181;
+            color: #742a2a
+        }
+
+        .sbox-yellow {
+            background: #fffbeb;
+            border-color: #f6ad55;
+            color: #744210
+        }
+
+        .sbox-green {
+            background: #f0fff4;
+            border-color: #68d391;
+            color: #22543d
+        }
+
+        .sbox-gray {
+            background: #e2e8f0;
+            border-color: #a0aec0;
+            color: #4a5568
+        }
+
+        .sbox-blue {
+            background: #ebf8ff;
+            border-color: #63b3ed;
+            color: #1a365d
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--green-dark);
+            color: rgba(255, 255, 255, .7);
+            text-align: center;
+            padding: 28px;
+            margin-top: 60px
+        }
+
+        footer p+p {
+            margin-top: 6px;
+            font-size: .85em
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:650px) {
+            .topnav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 16px
+            }
+
+            .hero h1 {
+                font-size: 1.7em
+            }
+
+            .flow {
+                flex-direction: column
+            }
+
+            .farrow {
+                transform: rotate(90deg)
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ STICKY NAV ══ -->
+    <div class="topnav">
+        <div class="brand">📋 SIInventaris — SMAN 1 Jorong</div>
+        <nav>
+            <a href="#revisi"
+                style="background:rgba(246,173,85,.35);color:#fbd38d;border:1px solid rgba(246,173,85,.5)">🔶 Ringkasan
+                Revisi</a>
+            <a href="#autentikasi">🔐 Login</a>
+            <a href="#dashboard">📊 Dashboard</a>
+            <a href="#admin">👑 Admin</a>
+            <a href="#staff">🧑‍💼 Staff</a>
+            <a href="#kepsek">🏫 Kepsek</a>
+            <a href="#pengguna">👤 Pengguna</a>
+            <a href="#matriks">📋 Matriks</a>
+        </nav>
+    </div>
+
+    <!-- ══ HERO ══ -->
+    <div class="hero">
+        <h1>📋 Panduan Lengkap Fitur Aplikasi</h1>
+        <p>Sistem Informasi Inventaris · SMAN 1 Jorong<br>Penjelasan lengkap seluruh fitur untuk semua peran pengguna
+        </p>
+        <div class="badge-row">
+            <span class="hbadge">🏫 SMAN 1 Jorong</span>
+            <span class="hbadge">⚙️ CodeIgniter 3</span>
+            <span class="hbadge">👥 4 Peran Pengguna</span>
+            <span class="hbadge">📦 20+ Modul Fitur</span>
+            <span class="rev-badge">🔶 10 Fitur Hasil Revisi</span>
+        </div>
+    </div>
+
+    <div class="wrap">
+
+        <!-- ══ LEGEND ══ -->
+        <div class="legend">
+            <span class="legend-title">Keterangan Tanda:</span>
+            <div class="leg-item">
+                <div class="leg-dot" style="background:#f6ad55"></div> <span><strong>Fitur Revisi</strong> — Fitur yang
+                    ditambahkan/diperbaiki berdasarkan catatan penguji skripsi</span>
+            </div>
+            <div class="leg-item">
+                <div class="leg-dot" style="background:#9ae6b4"></div> <span><strong>Fitur Baru</strong> — Modul baru
+                    yang sebelumnya tidak ada</span>
+            </div>
+            <div class="leg-item">
+                <div class="leg-dot" style="background:#90cdf4"></div> <span><strong>Ditingkatkan</strong> — Fitur lama
+                    yang diperkaya fungsinya</span>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- 🔶 SECTION KHUSUS REVISI                  -->
+        <!-- ══════════════════════════════════════════ -->
+        <div id="revisi" style="
+            background: linear-gradient(135deg, #744210 0%, #c05621 50%, #dd6b20 100%);
+            color:#fff; border-radius:16px; padding:28px 32px; margin-bottom:32px;
+            box-shadow: 0 4px 20px rgba(196,104,32,.4);
+        ">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+                <div style="font-size:2.2em">🔶</div>
+                <div>
+                    <h2 style="font-size:1.5em;font-weight:800">Ringkasan Fitur Hasil Revisi</h2>
+                    <p style="opacity:.85;font-size:.95em">10 poin revisi dari 3 penguji skripsi — semua sudah
+                        diimplementasikan</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Penguji: Al Fath Riza Kholdani -->
+        <div
+            style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:18px;overflow:hidden">
+            <div style="background:#2d6a4f;color:#fff;padding:14px 24px;display:flex;align-items:center;gap:12px">
+                <span style="font-size:1.4em">🎓</span>
+                <div>
+                    <div style="font-weight:700;font-size:1em">Penguji: Al Fath Riza Kholdani, S.Kom, M.Kom</div>
+                    <div style="font-size:.85em;opacity:.8">Pengelolaan Data Barang & Ruangan</div>
+                </div>
+            </div>
+            <div style="padding:20px 24px">
+
+                <!-- B1 -->
+                <div style="border:2px solid #f6ad55;border-radius:12px;padding:16px 20px;margin-bottom:14px">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+                        <span style="font-size:1.5em">🏷️</span>
+                        <span style="font-weight:700;font-size:1.05em">B1 — Kode Unik Barang</span>
+                        <span class="tag-rev">Revisi B1</span>
+                    </div>
+                    <p style="font-size:.9em;color:#4a5568;margin-bottom:12px">
+                        Setiap barang kini punya kode identifikasi unik otomatis format <strong>BRG-0001, BRG-0002,
+                            ...</strong>
+                        yang muncul di semua halaman — daftar barang, laporan, hingga kartu inventaris ruangan.
+                    </p>
+                    <div class="flow">
+                        <div class="flow-step"><span class="snum">1</span>
+                            <div class="slabel">Tambah Barang</div>
+                            <div class="ssub">Isi form seperti biasa</div>
+                        </div>
+                        <div class="farrow">→</div>
+                        <div class="flow-step"><span class="snum">2</span>
+                            <div class="slabel">Kode Auto</div>
+                            <div class="ssub">BRG-XXXX dibuat otomatis</div>
+                        </div>
+                        <div class="farrow">→</div>
+                        <div class="flow-step"><span class="snum">3</span>
+                            <div class="slabel">Tampil di Mana-mana</div>
+                            <div class="ssub">Semua halaman barang</div>
+                        </div>
+                        <div class="farrow">→</div>
+                        <div class="flow-step"><span class="snum">4</span>
+                            <div class="slabel">Bisa Diedit</div>
+                            <div class="ssub">Di form Edit Barang</div>
+                        </div>
+                    </div>
+                    <div style="margin-top:12px;font-size:.85em">
+                        <strong>Edit kode:</strong>
+                        <span class="pill p-green">👑 Admin</span>
+                        <span class="pill p-green">🧑‍💼 Staff</span>
+                        &emsp;<strong>Hanya lihat:</strong>
+                        <span class="pill p-blue">🏫 Kepsek</span>
+                        <span class="pill p-blue">👤 Pengguna</span>
+                    </div>
+                </div>
+
+                <!-- B2 -->
+                <div style="border:2px solid #fc8181;border-radius:12px;padding:16px 20px;margin-bottom:14px">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+                        <span style="font-size:1.5em">🔧</span>
+                        <span style="font-weight:700;font-size:1.05em">B2 — Pencatatan Perawatan & Perbaikan</span>
+                        <span class="tag-new">Modul Baru</span>
+                    </div>
+                    <p style="font-size:.9em;color:#4a5568;margin-bottom:12px">
+                        Menu baru <strong>"Perawatan Barang"</strong> di sidebar. Catat setiap kegiatan perawatan atau
+                        perbaikan
+                        barang inventaris — jenis, deskripsi, biaya, dan status penanganan.
+                    </p>
+                    <div class="igrid">
+                        <div class="icard" style="background:#ebf8ff;border:1px solid #90cdf4">
+                            <div class="ititle">🔩 Pemeliharaan</div>
+                            <div class="ibody">Servis rutin, pembersihan, pengecekan berkala</div>
+                        </div>
+                        <div class="icard" style="background:#fff5f5;border:1px solid #fc8181">
+                            <div class="ititle">🛠️ Perbaikan</div>
+                            <div class="ibody">Penggantian suku cadang, perbaikan komponen rusak</div>
+                        </div>
+                        <div class="icard" style="background:#fffbeb;border:1px solid #fbd38d">
+                            <div class="ititle">⏳ Proses</div>
+                            <div class="ibody">Sedang ditangani. Barang tidak bisa dihapus.</div>
+                        </div>
+                        <div class="icard" style="background:#f0fff4;border:1px solid #9ae6b4">
+                            <div class="ititle">✅ Selesai</div>
+                            <div class="ibody">Tersimpan sebagai riwayat permanen</div>
+                        </div>
+                    </div>
+                    <div style="margin-top:12px;font-size:.85em">
+                        <span class="pill p-green">👑 Admin — CRUD + Laporan</span> &nbsp;
+                        <span class="pill p-green">🧑‍💼 Staff — CRUD + Laporan</span> &nbsp;
+                        <span class="pill p-blue">🏫 Kepsek — Lihat + Laporan</span>
+                    </div>
+                </div>
+
+                <!-- B3 -->
+                <div style="border:2px solid #90cdf4;border-radius:12px;padding:16px 20px">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+                        <span style="font-size:1.5em">🗂️</span>
+                        <span style="font-weight:700;font-size:1.05em">B3 — Kartu Inventaris Ruangan</span>
+                        <span class="tag-new">Fitur Baru</span>
+                    </div>
+                    <p style="font-size:.9em;color:#4a5568;margin-bottom:12px">
+                        Di halaman <strong>Barang di Ruangan → Detail Ruangan</strong>, sekarang ada tombol
+                        <span
+                            style="background:#28a745;color:#fff;padding:2px 8px;border-radius:6px;font-size:.85em">🗂️
+                            Kartu Inventaris</span>
+                        yang membuka format cetak resmi inventaris ruangan tersebut.
+                    </p>
+                    <div class="flow">
+                        <div class="flow-step"><span class="snum">1</span>
+                            <div class="slabel">Menu Barang<br>di Ruangan</div>
+                        </div>
+                        <div class="farrow">→</div>
+                        <div class="flow-step"><span class="snum">2</span>
+                            <div class="slabel">Klik Detail<br>Ruangan</div>
+                        </div>
+                        <div class="farrow">→</div>
+                        <div class="flow-step"><span class="snum">3</span>
+                            <div class="slabel">Klik Kartu<br>Inventaris</div>
+                            <div class="ssub">Tombol hijau</div>
+                        </div>
+                        <div class="farrow">→</div>
+                        <div class="flow-step"><span class="snum">4</span>
+                            <div class="slabel">Halaman Cetak<br>Terbuka</div>
+                        </div>
+                        <div class="farrow">→</div>
+                        <div class="flow-step"><span class="snum">5</span>
+                            <div class="slabel">Print /<br>Simpan PDF</div>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top:10px;font-size:.85em;background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px">
+                        <strong>Isi Kartu Inventaris:</strong> Kode Ruangan · Nama Ruangan · Keterangan ·
+                        Tabel barang (Kode, Nama, Merek, Kategori, Jumlah, Satuan, Harga, Total Nilai, Pengguna) ·
+                        Total unit & total nilai · Kolom TTD Kepala Sekolah
+                    </div>
+                    <div style="margin-top:10px;font-size:.85em">
+                        <span class="pill p-green">👑 Admin ✅</span> &nbsp;
+                        <span class="pill p-green">🏫 Kepsek ✅</span> &nbsp;
+                        <span class="pill p-green">👤 Pengguna ✅</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Penguji: Yusup Indra Wijaya -->
+        <div
+            style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:18px;overflow:hidden">
+            <div style="background:#2b6cb0;color:#fff;padding:14px 24px;display:flex;align-items:center;gap:12px">
+                <span style="font-size:1.4em">🎓</span>
+                <div>
+                    <div style="font-weight:700;font-size:1em">Penguji: Yusup Indra Wijaya, S.Kom., M.Kom.</div>
+                    <div style="font-size:.85em;opacity:.8">Pengembangan Fitur & Pelaporan Analitis</div>
+                </div>
+            </div>
+            <div style="padding:20px 24px">
+                <div class="callout c-blue" style="margin-bottom:18px">
+                    <b>📍 Cara Mengakses Semua Laporan C1–C7</b>
+                    Login → Klik menu <strong>"Laporan Analitis"</strong> di sidebar kiri → Pilih laporan.
+                    Tersedia untuk: <span class="pill p-blue">👑 Administrator</span> dan <span class="pill p-blue">🏫
+                        Kepala Sekolah</span>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px">
+
+                    <!-- C1 -->
+                    <div style="border:2px solid #f6ad55;border-radius:12px;padding:16px">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+                            <span style="font-size:1.3em">⏳</span>
+                            <strong>C1 — Analisis Umur Teknis Aset</strong>
+                            <span class="tag-rev">C1</span>
+                        </div>
+                        <p style="font-size:.87em;color:#4a5568;margin-bottom:10px">
+                            Mendeteksi barang yang sudah melewati atau mendekati usia pakainya berdasarkan
+                            tanggal pengadaan dan umur ekonomis yang diset di data barang.
+                        </p>
+                        <div class="callout c-yellow" style="font-size:.83em;padding:8px 12px">
+                            <b>💡 Syarat akurat:</b> Isi <strong>Tanggal Pengadaan</strong> dan
+                            <strong>Umur Ekonomis</strong> saat tambah/edit barang.
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px">
+                            <div
+                                style="text-align:center;padding:8px;background:#fff5f5;border-radius:8px;font-size:.82em">
+                                🔴<br><strong>Lewat Usia</strong><br><span style="color:#742a2a">Segera ganti</span>
+                            </div>
+                            <div
+                                style="text-align:center;padding:8px;background:#fffbeb;border-radius:8px;font-size:.82em">
+                                🟡<br><strong>Mendekati Usia</strong><br><span style="color:#744210">Siapkan
+                                    anggaran</span></div>
+                            <div
+                                style="text-align:center;padding:8px;background:#f0fff4;border-radius:8px;font-size:.82em">
+                                🟢<br><strong>Masih Baik</strong><br><span style="color:#22543d">Kondisi normal</span>
+                            </div>
+                            <div
+                                style="text-align:center;padding:8px;background:#e2e8f0;border-radius:8px;font-size:.82em">
+                                ⚪<br><strong>Tidak Diketahui</strong><br><span style="color:#4a5568">Data kosong</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- C2 -->
+                    <div style="border:2px solid #fc8181;border-radius:12px;padding:16px">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+                            <span style="font-size:1.3em">💥</span>
+                            <strong>C2 — Rekap Kerusakan Aset</strong>
+                            <span class="tag-rev">C2</span>
+                        </div>
+                        <p style="font-size:.87em;color:#4a5568;margin-bottom:10px">
+                            Merangkum barang yang paling sering mengalami perawatan/perbaikan, diurutkan dari terbanyak.
+                            Lengkap dengan total biaya kumulatif.
+                        </p>
+                        <div style="font-size:.83em;margin-bottom:8px">
+                            <strong>Indikator frekuensi:</strong><br>
+                            <span class="pill p-red">≥ 5x — Kritis</span> &nbsp;
+                            <span class="pill p-yellow">3–4x — Perhatian</span> &nbsp;
+                            <span class="pill p-blue">1–2x — Normal</span>
+                        </div>
+                        <div class="callout c-yellow" style="font-size:.83em;padding:8px 12px">
+                            <b>💡 Ketergantungan:</b> Data dari modul <strong>Perawatan Barang (B2)</strong>.
+                            Semakin lengkap catatan, semakin akurat.
+                        </div>
+                    </div>
+
+                    <!-- C3 -->
+                    <div style="border:2px solid #68d391;border-radius:12px;padding:16px">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+                            <span style="font-size:1.3em">📱</span>
+                            <strong>C3 — Pemanfaatan Aset (QR)</strong>
+                            <span class="tag-rev">C3</span>
+                        </div>
+                        <p style="font-size:.87em;color:#4a5568;margin-bottom:10px">
+                            Mengukur tingkat penggunaan aset berdasarkan frekuensi pindai QR Code.
+                            Data terkumpul <strong>otomatis</strong> setiap QR diklik.
+                        </p>
+                        <div style="font-size:.83em;line-height:1.8">
+                            <div>① Klik ikon QR di Penggunaan Barang</div>
+                            <div>② Sistem catat otomatis (waktu, siapa, lokasi)</div>
+                            <div>③ Data masuk ke Laporan Pemanfaatan</div>
+                        </div>
+                        <div style="margin-top:8px;font-size:.83em">
+                            <span class="pill p-green">Tinggi ≥10x</span> &nbsp;
+                            <span class="pill p-blue">Sedang 3–9x</span> &nbsp;
+                            <span class="pill p-yellow">Rendah 1–2x</span> &nbsp;
+                            <span class="pill p-gray">Belum Dipindai</span>
+                        </div>
+                    </div>
+
+                    <!-- C4 -->
+                    <div style="border:2px solid #fc8181;border-radius:12px;padding:16px">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+                            <span style="font-size:1.3em">🔍</span>
+                            <strong>C4 — Barang Hilang / Tidak Ditemukan</strong>
+                            <span class="tag-rev">C4</span>
+                        </div>
+                        <p style="font-size:.87em;color:#4a5568;margin-bottom:10px">
+                            Daftar aset yang saat pemindaian QR ditandai tidak ada di lokasi seharusnya. Peringatan dini
+                            untuk pengecekan fisik.
+                        </p>
+                        <div class="callout c-red" style="font-size:.83em;padding:8px 12px">
+                            <b>⚠️ Perhatian</b>
+                            Ini indikasi awal — perlu konfirmasi pengecekan fisik ke ruangan tersebut.
+                        </div>
+                    </div>
+
+                    <!-- C5 -->
+                    <div style="border:2px solid #d6bcfa;border-radius:12px;padding:16px">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+                            <span style="font-size:1.3em">📊</span>
+                            <strong>C5 — Perbandingan Aset per Ruangan</strong>
+                            <span class="tag-rev">C5</span>
+                        </div>
+                        <p style="font-size:.87em;color:#4a5568;margin-bottom:10px">
+                            Membandingkan jumlah dan jenis aset aktif per ruangan per kategori. Berguna untuk
+                            mengevaluasi pemerataan distribusi inventaris.
+                        </p>
+                        <div
+                            style="background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;font-size:.83em">
+                            <strong>Contoh:</strong> Lab Komputer punya 10 laptop, Lab IPA hanya 2 —
+                            bisa jadi dasar usulan redistribusi di pengajuan berikutnya.
+                        </div>
+                    </div>
+
+                    <!-- C6 -->
+                    <div style="border:2px solid #90cdf4;border-radius:12px;padding:16px">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+                            <span style="font-size:1.3em">🚚</span>
+                            <strong>C6 — Laporan Pemindahan Aset</strong>
+                            <span class="tag-rev">C6</span>
+                        </div>
+                        <p style="font-size:.87em;color:#4a5568;margin-bottom:10px">
+                            Log historis perpindahan barang antar ruangan. Dicatat manual via menu <strong>Pemindahan
+                                Aset</strong> di sidebar.
+                        </p>
+                        <div class="callout c-blue" style="font-size:.83em;padding:8px 12px">
+                            <b>📍 Dua jalur akses:</b><br>
+                            1. Sidebar → <strong>Pemindahan Aset</strong> (input + lihat log)<br>
+                            2. Sidebar → <strong>Laporan Analitis → Log Pemindahan</strong> (filter tanggal)
+                        </div>
+                    </div>
+
+                    <!-- C7 -->
+                    <div style="border:2px solid #9ae6b4;border-radius:12px;padding:16px;grid-column:1/-1">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+                            <span style="font-size:1.3em">📡</span>
+                            <strong>C7 — Riwayat Pindai QR Code</strong>
+                            <span class="tag-rev">C7</span>
+                        </div>
+                        <p style="font-size:.87em;color:#4a5568;margin-bottom:12px">
+                            Jejak digital semua pemindaian QR Code. Data terkumpul <strong>otomatis setiap QR
+                                diklik</strong> — tidak ada input manual.
+                            Berguna untuk audit dan monitoring keberadaan aset.
+                        </p>
+                        <div class="igrid">
+                            <div class="icard" style="background:#f0fff4;border:1px solid #9ae6b4">
+                                <div class="ititle">📅 Waktu</div>
+                                <div class="ibody">Tanggal & jam tepat pemindaian</div>
+                            </div>
+                            <div class="icard" style="background:#ebf8ff;border:1px solid #90cdf4">
+                                <div class="ititle">📦 Barang</div>
+                                <div class="ibody">Kode & nama barang yang dipindai</div>
+                            </div>
+                            <div class="icard" style="background:#faf5ff;border:1px solid #d6bcfa">
+                                <div class="ititle">👤 Pemindai</div>
+                                <div class="ibody">Pengguna yang login saat memindai</div>
+                            </div>
+                            <div class="icard" style="background:#fffbeb;border:1px solid #fbd38d">
+                                <div class="ititle">🏢 Lokasi</div>
+                                <div class="ibody">Ruangan yang seharusnya ditempati barang</div>
+                            </div>
+                            <div class="icard" style="background:#fff5f5;border:1px solid #fc8181">
+                                <div class="ititle">📍 Status</div>
+                                <div class="ibody"><span class="pill p-green">Ditemukan</span> atau <span
+                                        class="pill p-red">Tidak Ditemukan</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Garis pemisah -->
+        <div style="text-align:center;margin:12px 0 48px;color:var(--gray);font-size:.9em">
+            ▼ &nbsp; Selengkapnya: panduan semua fitur per peran di bawah ini &nbsp; ▼
+        </div>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- 1. AUTENTIKASI                             -->
+        <!-- ══════════════════════════════════════════ -->
+        <div id="autentikasi" class="sec-header">
+            <div class="sec-icon">🔐</div>
+            <div>
+                <h2>Autentikasi — Login, Register & Logout</h2>
+                <p>Pintu masuk ke seluruh sistem · Diakses semua peran</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-card-header">
+                <div class="fc-icon">🔑</div>
+                <div>
+                    <div class="fc-title">Login</div>
+                    <div class="fc-sub">Masuk ke sistem dengan email dan password</div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <div class="flow">
+                    <div class="flow-step"><span class="snum">1</span>
+                        <div class="slabel">Buka Aplikasi</div>
+                        <div class="ssub">Halaman login tampil</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">2</span>
+                        <div class="slabel">Isi Email & Password</div>
+                        <div class="ssub">Gunakan akun yang terdaftar</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">3</span>
+                        <div class="slabel">Klik Masuk</div>
+                        <div class="ssub">Sistem verifikasi data</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">4</span>
+                        <div class="slabel">Masuk Dashboard</div>
+                        <div class="ssub">Menu sesuai peran muncul</div>
+                    </div>
+                </div>
+                <div class="igrid">
+                    <div class="icard" style="background:#f0fff4;border:1px solid #9ae6b4">
+                        <div class="ititle">📧 Login</div>
+                        <div class="ibody">Menggunakan email + password. Password disimpan terenkripsi.</div>
+                    </div>
+                    <div class="icard" style="background:#ebf8ff;border:1px solid #90cdf4">
+                        <div class="ititle">📝 Register</div>
+                        <div class="ibody">Siapa pun bisa daftar mandiri. Akun baru otomatis jadi Pengguna.</div>
+                    </div>
+                    <div class="icard" style="background:#fff5f5;border:1px solid #fc8181">
+                        <div class="ititle">🚪 Logout</div>
+                        <div class="ibody">Tombol Logout di sidebar. Session langsung dihapus.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- 2. DASHBOARD                               -->
+        <!-- ══════════════════════════════════════════ -->
+        <div id="dashboard" class="sec-header">
+            <div class="sec-icon">📊</div>
+            <div>
+                <h2>Dashboard <span class="tag-enhanced">Ditingkatkan</span></h2>
+                <p>Rekapan dan visualisasi data seluruh sistem · Diakses semua peran</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-card-header">
+                <div class="fc-icon">🖥️</div>
+                <div>
+                    <div class="fc-title">Beranda Utama — Rekap & Grafik</div>
+                    <div class="fc-sub">Ringkasan lengkap kondisi inventaris sekolah dalam satu halaman</div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <p style="margin-bottom:14px">Dashboard menampilkan 12 info-box ringkasan, analisis umur teknis, dan 8
+                    grafik interaktif secara otomatis setiap halaman dibuka.</p>
+
+                <div style="font-weight:700;color:var(--green);margin-bottom:10px">📦 Info-box yang Ditampilkan</div>
+                <div class="igrid">
+                    <div class="icard" style="background:#f0fff4;border:1px solid #9ae6b4">
+                        <div class="ititle">Total Barang</div>
+                        <div class="ibody">Jumlah jenis barang + berapa kategori</div>
+                    </div>
+                    <div class="icard" style="background:#ebf8ff;border:1px solid #90cdf4">
+                        <div class="ititle">Ruangan</div>
+                        <div class="ibody">Total ruangan terdaftar</div>
+                    </div>
+                    <div class="icard" style="background:#faf5ff;border:1px solid #d6bcfa">
+                        <div class="ititle">Pengguna</div>
+                        <div class="ibody">Total akun aktif</div>
+                    </div>
+                    <div class="icard" style="background:#ebf8ff;border:1px solid #90cdf4">
+                        <div class="ititle">Sedang Digunakan</div>
+                        <div class="ibody">Catatan penggunaan aktif</div>
+                    </div>
+                    <div class="icard" style="background:#e6fffa;border:1px solid #81e6d9">
+                        <div class="ititle">Barang Masuk</div>
+                        <div class="ibody">Transaksi Konfirmasi</div>
+                    </div>
+                    <div class="icard" style="background:#fffbeb;border:1px solid #fbd38d">
+                        <div class="ititle">Barang Keluar</div>
+                        <div class="ibody">Transaksi Konfirmasi</div>
+                    </div>
+                    <div class="icard" style="background:#fff5f5;border:1px solid #fc8181">
+                        <div class="ititle">Perawatan <span class="tag-new">Baru</span></div>
+                        <div class="ibody">Total + berapa yang sedang Proses</div>
+                    </div>
+                    <div class="icard" style="background:#fff5f5;border:1px solid #fc8181">
+                        <div class="ititle">Tidak Ditemukan <span class="tag-new">Baru</span></div>
+                        <div class="ibody">Laporan barang hilang dari QR scan</div>
+                    </div>
+                    <div class="icard" style="background:#fffbeb;border:1px solid #fbd38d">
+                        <div class="ititle">Pengajuan Menunggu</div>
+                        <div class="ibody">Belum disetujui kepsek</div>
+                    </div>
+                    <div class="icard" style="background:#f0fff4;border:1px solid #9ae6b4">
+                        <div class="ititle">Pengajuan Disetujui</div>
+                        <div class="ibody">Sudah diproses</div>
+                    </div>
+                    <div class="icard" style="background:#ebf8ff;border:1px solid #90cdf4">
+                        <div class="ititle">Pindai QR <span class="tag-new">Baru</span></div>
+                        <div class="ibody">Total riwayat scan</div>
+                    </div>
+                    <div class="icard" style="background:#faf5ff;border:1px solid #d6bcfa">
+                        <div class="ititle">Pemindahan Aset <span class="tag-new">Baru</span></div>
+                        <div class="ibody">Log perpindahan barang</div>
+                    </div>
+                </div>
+
+                <div style="font-weight:700;color:var(--green);margin:18px 0 10px">📈 Grafik yang Tersedia</div>
+                <div class="igrid">
+                    <div class="icard" style="background:#f7fafc;border:1px solid #e2e8f0">
+                        <div class="ititle">🍩 Distribusi Kategori</div>
+                        <div class="ibody">Pie chart jumlah barang per kategori</div>
+                    </div>
+                    <div class="icard" style="background:#f7fafc;border:1px solid #e2e8f0">
+                        <div class="ititle">🍩 Status Pengajuan</div>
+                        <div class="ibody">Pie chart menunggu/disetujui/ditolak</div>
+                    </div>
+                    <div class="icard" style="background:#f7fafc;border:1px solid #e2e8f0">
+                        <div class="ititle">🍩 Umur Teknis <span class="tag-new">Baru</span></div>
+                        <div class="ibody">Pie chart status usia aset</div>
+                    </div>
+                    <div class="icard" style="background:#f7fafc;border:1px solid #e2e8f0">
+                        <div class="ititle">↔️ Penggunaan Tertinggi</div>
+                        <div class="ibody">Top 7 barang paling banyak dipakai</div>
+                    </div>
+                    <div class="icard" style="background:#f7fafc;border:1px solid #e2e8f0">
+                        <div class="ititle">📊 Aset per Ruangan</div>
+                        <div class="ibody">Jumlah unit aktif per ruangan</div>
+                    </div>
+                    <div class="icard" style="background:#f7fafc;border:1px solid #e2e8f0">
+                        <div class="ititle">📊 Pindai QR <span class="tag-new">Baru</span></div>
+                        <div class="ibody">Frekuensi scan per barang</div>
+                    </div>
+                    <div class="icard" style="background:#f7fafc;border:1px solid #e2e8f0">
+                        <div class="ititle">📈 Tren Transaksi</div>
+                        <div class="ibody">Masuk & keluar 6 bulan terakhir</div>
+                    </div>
+                    <div class="icard" style="background:#f7fafc;border:1px solid #e2e8f0">
+                        <div class="ititle">📈 Tren Perawatan <span class="tag-new">Baru</span></div>
+                        <div class="ibody">Frekuensi perawatan 6 bulan terakhir</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- 3. ADMINISTRATOR                           -->
+        <!-- ══════════════════════════════════════════ -->
+        <div id="admin" class="sec-header">
+            <div class="sec-icon">👑</div>
+            <div>
+                <h2>Administrator</h2>
+                <p>Akses penuh ke seluruh sistem — manajemen pengguna, data master, transaksi, dan semua laporan</p>
+            </div>
+        </div>
+
+        <!-- ── Manajemen Pengguna ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#bee3f8">👤</div>
+                    <div>
+                        <h3>Manajemen Pengguna</h3>
+                        <p>Kelola semua akun yang bisa login ke sistem</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <table class="rt">
+                    <tr>
+                        <th>Aksi</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                    <tr>
+                        <td>Lihat Daftar Akun</td>
+                        <td>Tampilkan semua pengguna beserta peran, email, dan nomor telepon</td>
+                    </tr>
+                    <tr>
+                        <td>Tambah Akun</td>
+                        <td>Buat akun baru dengan pilihan peran: Administrator, Staff, Kepala Sekolah, atau Pengguna
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Edit Akun</td>
+                        <td>Ubah nama, email, telepon, peran, dan foto profil</td>
+                    </tr>
+                    <tr>
+                        <td>Ganti Password</td>
+                        <td>Reset kata sandi akun mana pun tanpa perlu tahu password lama</td>
+                    </tr>
+                    <tr>
+                        <td>Hapus Akun</td>
+                        <td>Hapus akun (diblokir jika akun masih terhubung ke penggunaan barang aktif)</td>
+                    </tr>
+                    <tr>
+                        <td>Ekspor Laporan</td>
+                        <td>Cetak atau ekspor daftar akun (CSV/Excel/PDF)</td>
+                    </tr>
+                </table>
+                <div class="callout c-yellow">
+                    <b>⚠️ Perhatian</b>
+                    Akun tidak bisa dihapus jika masih ada catatan Penggunaan Barang berstatus Konfirmasi yang
+                    terhubung.
+                    Selesaikan atau batalkan penggunaan barang tersebut terlebih dahulu.
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Data Kategori ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#c6f6d5">📑</div>
+                    <div>
+                        <h3>Data Kategori</h3>
+                        <p>Kelola pengelompokan jenis barang inventaris</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <p style="margin-bottom:12px">Kategori digunakan untuk mengelompokkan barang. Contoh: Komputer,
+                    Furniture, Alat Tulis, Alat Kebersihan.</p>
+                <table class="rt">
+                    <tr>
+                        <th>Aksi</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                    <tr>
+                        <td>Lihat Daftar</td>
+                        <td>Tampilkan semua kategori yang ada</td>
+                    </tr>
+                    <tr>
+                        <td>Tambah</td>
+                        <td>Buat kategori baru</td>
+                    </tr>
+                    <tr>
+                        <td>Edit</td>
+                        <td>Ubah nama kategori</td>
+                    </tr>
+                    <tr>
+                        <td>Hapus</td>
+                        <td>Hapus kategori (diblokir jika ada barang yang masih menggunakan kategori ini)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ── Data Barang ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#fefcbf">📦</div>
+                    <div>
+                        <h3>Data Barang <span class="tag-enhanced">Ditingkatkan</span></h3>
+                        <p>Master data inventaris dengan kode unik dan informasi umur teknis</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <div class="callout c-green" style="margin-bottom:14px">
+                    <b>🔶 Hasil Revisi B1 — Kode Unik Barang</b>
+                    Setiap barang kini punya kode identifikasi unik otomatis (format <strong>BRG-0001</strong>).
+                    Kode dibuat saat barang pertama ditambahkan dan bisa diedit manual jika diperlukan.
+                </div>
+                <div class="callout c-blue" style="margin-bottom:14px">
+                    <b>🔶 Hasil Revisi C1 — Data Umur Teknis</b>
+                    Tambah 2 kolom baru: <strong>Tanggal Pengadaan</strong> dan <strong>Umur Ekonomis</strong> (default
+                    5 tahun).
+                    Data ini dipakai oleh laporan Analisis Umur Teknis Aset.
+                </div>
+                <table class="rt">
+                    <tr>
+                        <th>Field Utama</th>
+                        <th>Keterangan</th>
+                    </tr>
+                    <tr>
+                        <td>Kode Barang <span class="tag-rev">Revisi B1</span></td>
+                        <td>Kode unik format BRG-XXXX, otomatis dibuat, bisa diedit manual</td>
+                    </tr>
+                    <tr>
+                        <td>Nama Barang</td>
+                        <td>Nama lengkap barang</td>
+                    </tr>
+                    <tr>
+                        <td>Kategori</td>
+                        <td>Dipilih dari master kategori</td>
+                    </tr>
+                    <tr>
+                        <td>Brand/Merek</td>
+                        <td>Merek atau produsen barang</td>
+                    </tr>
+                    <tr>
+                        <td>Stok</td>
+                        <td>Jumlah stok saat ini (otomatis berubah saat transaksi)</td>
+                    </tr>
+                    <tr>
+                        <td>Harga & Satuan</td>
+                        <td>Harga per satuan dan satuannya (unit/pcs/pack/dll)</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Pengadaan <span class="tag-rev">Revisi C1</span></td>
+                        <td>Kapan barang pertama kali diadakan/dibeli</td>
+                    </tr>
+                    <tr>
+                        <td>Umur Ekonomis <span class="tag-rev">Revisi C1</span></td>
+                        <td>Berapa tahun barang ini diperkirakan layak pakai (default 5)</td>
+                    </tr>
+                    <tr>
+                        <td>Foto & Deskripsi</td>
+                        <td>Foto barang dan keterangan tambahan</td>
+                    </tr>
+                </table>
+                <div class="callout c-yellow" style="margin-top:12px">
+                    <b>⚠️ Aturan Hapus</b>
+                    Barang tidak bisa dihapus jika masih terhubung ke transaksi Konfirmasi (masuk/keluar/penggunaan)
+                    atau ada perawatan berstatus Proses.
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Data Ruangan ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#bee3f8">🏢</div>
+                    <div>
+                        <h3>Data Ruangan</h3>
+                        <p>Kelola lokasi/ruangan tempat barang ditempatkan</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <table class="rt">
+                    <tr>
+                        <th>Field</th>
+                        <th>Keterangan</th>
+                    </tr>
+                    <tr>
+                        <td>Kode Ruangan</td>
+                        <td>Kode singkat ruangan, misal KG-001, R1</td>
+                    </tr>
+                    <tr>
+                        <td>Nama Ruangan</td>
+                        <td>Nama lengkap, misal "Kantor Guru", "Ruang Kelas 1"</td>
+                    </tr>
+                    <tr>
+                        <td>Keterangan</td>
+                        <td>Deskripsi tambahan ruangan</td>
+                    </tr>
+                </table>
+                <div class="callout c-yellow"><b>⚠️ Aturan Hapus</b> Ruangan tidak bisa dihapus jika masih ada
+                    penggunaan barang aktif di sana.</div>
+            </div>
+        </div>
+
+        <!-- ── Barang Masuk ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#c6f6d5">🚛</div>
+                    <div>
+                        <h3>Barang Masuk</h3>
+                        <p>Catat penerimaan stok baru — stok otomatis bertambah</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <div class="flow">
+                    <div class="flow-step"><span class="snum">1</span>
+                        <div class="slabel">Pilih Barang</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">2</span>
+                        <div class="slabel">Isi Formulir</div>
+                        <div class="ssub">Tanggal, jumlah, catatan</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">3</span>
+                        <div class="slabel">Simpan</div>
+                        <div class="ssub">Status: Konfirmasi</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">4</span>
+                        <div class="slabel">Stok Bertambah</div>
+                        <div class="ssub">Otomatis terhitung</div>
+                    </div>
+                </div>
+                <table class="rt">
+                    <tr>
+                        <th>Aksi</th>
+                        <th>Efek pada Stok</th>
+                    </tr>
+                    <tr>
+                        <td>Tambah (Insert)</td>
+                        <td>✅ Stok barang <strong>bertambah</strong> sesuai jumlah</td>
+                    </tr>
+                    <tr>
+                        <td>Batalkan (Reject)</td>
+                        <td>🔄 Stok barang <strong>dikurangi kembali</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Hapus transaksi Konfirmasi</td>
+                        <td>🔄 Stok barang <strong>dikurangi kembali</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Hapus transaksi Batal</td>
+                        <td>➖ Tidak ada perubahan stok</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ── Barang Keluar ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#fefcbf">📤</div>
+                    <div>
+                        <h3>Barang Keluar</h3>
+                        <p>Catat pengeluaran stok — stok otomatis berkurang</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <div class="flow">
+                    <div class="flow-step"><span class="snum">1</span>
+                        <div class="slabel">Pilih Barang</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">2</span>
+                        <div class="slabel">Isi Formulir</div>
+                        <div class="ssub">Tanggal, penerima, jumlah</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">3</span>
+                        <div class="slabel">Simpan</div>
+                        <div class="ssub">Status: Konfirmasi</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">4</span>
+                        <div class="slabel">Stok Berkurang</div>
+                        <div class="ssub">Otomatis terhitung</div>
+                    </div>
+                </div>
+                <p style="font-size:.9em;margin-top:10px">Sistem Reject dan Hapus bekerja sama seperti Barang Masuk —
+                    stok dikembalikan jika transaksi berstatus Konfirmasi.</p>
+            </div>
+        </div>
+
+        <!-- ── Penggunaan Barang ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#bee3f8">🔖</div>
+                    <div>
+                        <h3>Penggunaan Barang</h3>
+                        <p>Penugasan barang ke pengguna di ruangan tertentu + QR Code</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <p style="margin-bottom:12px">Mencatat siapa yang menggunakan barang apa, di ruangan mana, dan kapan
+                    harus dikembalikan. Setiap catatan mendapat QR Code unik.</p>
+                <div class="flow">
+                    <div class="flow-step"><span class="snum">1</span>
+                        <div class="slabel">Pilih Barang</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">2</span>
+                        <div class="slabel">Pilih Pengguna & Ruangan</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">3</span>
+                        <div class="slabel">Set Tanggal Ambil & Kembali</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">4</span>
+                        <div class="slabel">Simpan</div>
+                        <div class="ssub">QR Code otomatis dibuat</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">5</span>
+                        <div class="slabel">Stok Berkurang</div>
+                        <div class="ssub">Sesuai jumlah yang dipakai</div>
+                    </div>
+                </div>
+                <div class="callout c-green">
+                    <b>📱 QR Code</b>
+                    Setiap catatan penggunaan punya QR Code yang bisa dipindai untuk verifikasi keberadaan barang.
+                    Saat dipindai, sistem mencatat siapa, kapan, dan di mana — otomatis masuk ke riwayat pindai.
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Pengajuan Barang ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#fefcbf">📋</div>
+                    <div>
+                        <h3>Pengajuan Barang</h3>
+                        <p>Usulan pengadaan barang baru dengan alur persetujuan Kepala Sekolah</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <div class="flow">
+                    <div class="flow-step"><span class="snum">1</span>
+                        <div class="slabel">Admin/Staff/<br>Pengguna</div>
+                        <div class="ssub">Buat pengajuan</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">2</span>
+                        <div class="slabel">Status: Menunggu</div>
+                        <div class="ssub">acc_kepsek = 0</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">3</span>
+                        <div class="slabel">Kepala Sekolah</div>
+                        <div class="ssub">Review pengajuan</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">4a</span>
+                        <div class="slabel">✅ Disetujui</div>
+                        <div class="ssub">acc_kepsek = 1</div>
+                    </div>
+                </div>
+                <div class="flow" style="margin-top:6px">
+                    <div class="flow-step" style="opacity:0;pointer-events:none;max-flex:110px"></div>
+                    <div class="farrow" style="opacity:0">→</div>
+                    <div class="flow-step" style="opacity:0;pointer-events:none;max-flex:110px"></div>
+                    <div class="farrow" style="opacity:0">→</div>
+                    <div class="flow-step" style="opacity:0;pointer-events:none;max-flex:110px"></div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">4b</span>
+                        <div class="slabel">❌ Ditolak</div>
+                        <div class="ssub">acc_kepsek = 2</div>
+                    </div>
+                </div>
+                <div style="margin-top:12px">
+                    <span class="pill p-yellow">⏳ Menunggu</span> &nbsp;
+                    <span class="pill p-green">✅ Disetujui</span> &nbsp;
+                    <span class="pill p-red">❌ Ditolak</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Barang di Ruangan ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#e6fffa">🗂️</div>
+                    <div>
+                        <h3>Barang di Ruangan + Kartu Inventaris <span class="tag-enhanced">Ditingkatkan</span></h3>
+                        <p>Tampilan dan cetakan inventaris per ruangan</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <div class="callout c-green" style="margin-bottom:12px">
+                    <b>🔶 Hasil Revisi B3 — Kartu Inventaris Ruangan</b>
+                    Sekarang ada tombol "Kartu Inventaris" di setiap halaman detail ruangan.
+                    Kartu menampilkan semua barang aktif lengkap dengan <strong>kode barang, harga, total nilai, dan
+                        kolom TTD Kepala Sekolah</strong>.
+                </div>
+                <table class="rt">
+                    <tr>
+                        <th>Halaman</th>
+                        <th>Isi</th>
+                    </tr>
+                    <tr>
+                        <td>Daftar Ruangan</td>
+                        <td>List semua ruangan dengan tombol Detail</td>
+                    </tr>
+                    <tr>
+                        <td>Detail Ruangan</td>
+                        <td>Tabel barang aktif di ruangan itu + tombol QR + Kode Barang <span
+                                class="tag-rev">Revisi</span></td>
+                    </tr>
+                    <tr>
+                        <td>Cetak Laporan</td>
+                        <td>Print daftar barang di ruangan (format standar)</td>
+                    </tr>
+                    <tr>
+                        <td>Kartu Inventaris <span class="tag-new">Baru</span></td>
+                        <td>Format kartu resmi: kode, nama, brand, kategori, jumlah, satuan, harga, total nilai, TTD
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ── Riwayat ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#e2e8f0">⏱️</div>
+                    <div>
+                        <h3>Riwayat Transaksi</h3>
+                        <p>Gabungan histori barang masuk dan keluar dengan filter tanggal</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <p>Halaman ini menggabungkan semua transaksi Barang Masuk dan Barang Keluar dalam satu tampilan. Bisa
+                    difilter berdasarkan rentang tanggal dan diekspor ke PDF/CSV/Excel.</p>
+            </div>
+        </div>
+
+        <!-- ── Perawatan Barang ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#fed7d7">🔧</div>
+                    <div>
+                        <h3>Perawatan Barang <span class="tag-new">Baru</span></h3>
+                        <p>Pencatatan kegiatan perawatan dan perbaikan inventaris</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <div class="callout c-green" style="margin-bottom:14px">
+                    <b>🔶 Hasil Revisi B2 — Pencatatan Perawatan & Perbaikan</b>
+                    Modul baru untuk mencatat setiap kegiatan perawatan/perbaikan barang. Data ini juga digunakan
+                    untuk Laporan Rekap Kerusakan di menu Analitik.
+                </div>
+                <div class="flow">
+                    <div class="flow-step"><span class="snum">1</span>
+                        <div class="slabel">Klik Tambah</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">2</span>
+                        <div class="slabel">Pilih Barang</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">3</span>
+                        <div class="slabel">Isi Detail</div>
+                        <div class="ssub">Jenis, deskripsi, biaya</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">4</span>
+                        <div class="slabel">Set Status</div>
+                        <div class="ssub">Proses / Selesai</div>
+                    </div>
+                    <div class="farrow">→</div>
+                    <div class="flow-step"><span class="snum">5</span>
+                        <div class="slabel">Simpan</div>
+                    </div>
+                </div>
+                <div class="igrid" style="margin-top:14px">
+                    <div class="icard" style="background:#ebf8ff;border:1px solid #90cdf4">
+                        <div class="ititle">🔩 Pemeliharaan</div>
+                        <div class="ibody">Service rutin, pembersihan, pengecekan berkala</div>
+                    </div>
+                    <div class="icard" style="background:#fff5f5;border:1px solid #fc8181">
+                        <div class="ititle">🛠️ Perbaikan</div>
+                        <div class="ibody">Penggantian suku cadang, perbaikan komponen rusak</div>
+                    </div>
+                    <div class="icard" style="background:#fffbeb;border:1px solid #fbd38d">
+                        <div class="ititle">⏳ Proses</div>
+                        <div class="ibody">Sedang berjalan. Barang tidak bisa dihapus.</div>
+                    </div>
+                    <div class="icard" style="background:#f0fff4;border:1px solid #9ae6b4">
+                        <div class="ititle">✅ Selesai</div>
+                        <div class="ibody">Tersimpan sebagai riwayat permanen</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Pemindahan Aset ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#bee3f8">🚚</div>
+                    <div>
+                        <h3>Pemindahan Aset <span class="tag-new">Baru</span></h3>
+                        <p>Log historis perpindahan barang antar ruangan</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <div class="callout c-green" style="margin-bottom:14px">
+                    <b>🔶 Hasil Revisi C6 — Laporan Pemindahan Aset</b>
+                    Catat setiap perpindahan barang dari satu ruangan ke ruangan lain. Log ini bersifat permanen
+                    dan bisa difilter berdasarkan tanggal untuk keperluan audit.
+                </div>
+                <table class="rt">
+                    <tr>
+                        <th>Field</th>
+                        <th>Keterangan</th>
+                    </tr>
+                    <tr>
+                        <td>Barang</td>
+                        <td>Barang yang dipindahkan (pilih dari daftar)</td>
+                    </tr>
+                    <tr>
+                        <td>Ruangan Asal</td>
+                        <td>Dari mana barang berasal (boleh kosong jika baru masuk sistem)</td>
+                    </tr>
+                    <tr>
+                        <td>Ruangan Tujuan</td>
+                        <td>Ke mana barang dipindahkan (wajib diisi)</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Pindah</td>
+                        <td>Kapan pemindahan terjadi</td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah</td>
+                        <td>Berapa unit yang dipindahkan</td>
+                    </tr>
+                    <tr>
+                        <td>Alasan</td>
+                        <td>Penjelasan mengapa dipindahkan</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ── Laporan Analitis ── -->
+        <div class="role-section">
+            <div class="role-header" onclick="toggle(this)">
+                <div class="role-header-left">
+                    <div class="role-icon" style="background:#fefcbf">📊</div>
+                    <div>
+                        <h3>Laporan Analitis (7 Laporan) <span class="tag-new">Baru</span></h3>
+                        <p>Analisis mendalam kondisi aset — semua hasil revisi penguji</p>
+                    </div>
+                </div>
+                <span class="toggle-arrow">▶</span>
+            </div>
+            <div class="role-body">
+                <div class="callout c-green" style="margin-bottom:16px">
+                    <b>🔶 Hasil Revisi C1–C7 — Seluruh Laporan Analitis</b>
+                    Semua 7 laporan di bagian ini adalah fitur baru hasil revisi dari penguji Yusup Indra Wijaya,
+                    S.Kom., M.Kom.
+                </div>
+                <table class="rt">
+                    <tr>
+                        <th>Laporan</th>
+                        <th>Revisi</th>
+                        <th>Apa yang Ditampilkan</th>
+                    </tr>
+                    <tr>
+                        <td><strong>C1 — Umur Teknis Aset</strong></td>
+                        <td><span class="tag-rev">C1</span></td>
+                        <td>Status usia setiap barang: Lewat Usia 🔴 / Mendekati Usia 🟡 / Masih Baik 🟢. Berguna untuk
+                            merencanakan penggantian barang.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C2 — Rekap Kerusakan</strong></td>
+                        <td><span class="tag-rev">C2</span></td>
+                        <td>Barang yang paling sering dirawat/diperbaiki, diurutkan dari yang terbanyak. Lengkap dengan
+                            total biaya perbaikan.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C3 — Pemanfaatan Aset</strong></td>
+                        <td><span class="tag-rev">C3</span></td>
+                        <td>Tingkat pemanfaatan barang berdasarkan frekuensi pindai QR Code: Tinggi / Sedang / Rendah /
+                            Belum Dipindai.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C4 — Barang Hilang</strong></td>
+                        <td><span class="tag-rev">C4</span></td>
+                        <td>Daftar barang yang saat pindai QR ditandai "Tidak Ditemukan" di lokasi seharusnya.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C5 — Perbandingan Aset/Ruangan</strong></td>
+                        <td><span class="tag-rev">C5</span></td>
+                        <td>Perbandingan jumlah unit aset per kategori di setiap ruangan. Berguna untuk evaluasi
+                            pemerataan distribusi.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C6 — Log Pemindahan</strong></td>
+                        <td><span class="tag-rev">C6</span></td>
+                        <td>Riwayat historis lengkap perpindahan aset antar ruangan, bisa difilter tanggal.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C7 — Riwayat Pindai QR</strong></td>
+                        <td><span class="tag-rev">C7</span></td>
+                        <td>Jejak digital semua pemindaian QR: tanggal, jam, barang, ruangan, siapa yang pindai, status
+                            ditemukan/tidak.</td>
+                    </tr>
+                </table>
+
+                <!-- Status box umur teknis -->
+                <div style="font-weight:700;color:var(--green);margin:18px 0 10px">Status Umur Teknis (C1)</div>
+                <div class="status-grid">
+                    <div class="sbox sbox-red">
+                        <div class="sbig">🔴</div>
+                        <div class="slabel">Lewat Usia</div>
+                        <div class="sdesc">Usia melebihi umur ekonomis → perlu segera diganti</div>
+                    </div>
+                    <div class="sbox sbox-yellow">
+                        <div class="sbig">🟡</div>
+                        <div class="slabel">Mendekati Usia</div>
+                        <div class="sdesc">Kurang dari 1 tahun dari batas → mulai siapkan anggaran</div>
+                    </div>
+                    <div class="sbox sbox-green">
+                        <div class="sbig">🟢</div>
+                        <div class="slabel">Masih Baik</div>
+                        <div class="sdesc">Masih jauh dari batas → lanjutkan pemeliharaan rutin</div>
+                    </div>
+                    <div class="sbox sbox-gray">
+                        <div class="sbig">⚪</div>
+                        <div class="slabel">Tidak Diketahui</div>
+                        <div class="sdesc">Tanggal pengadaan belum diisi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- 4. STAFF                                   -->
+        <!-- ══════════════════════════════════════════ -->
+        <div id="staff" class="sec-header">
+            <div class="sec-icon">🧑‍💼</div>
+            <div>
+                <h2>Staff</h2>
+                <p>Operator gudang — kelola data master, transaksi stok, pengajuan, dan perawatan</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-card-header">
+                <div class="fc-icon">📋</div>
+                <div>
+                    <div class="fc-title">Fitur yang Bisa Diakses Staff</div>
+                    <div class="fc-sub">Fokus pada operasional harian gudang inventaris</div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <table class="rt">
+                    <tr>
+                        <th>Modul</th>
+                        <th>Yang Bisa Dilakukan</th>
+                    </tr>
+                    <tr>
+                        <td>Data Kategori</td>
+                        <td>Tambah, edit, hapus kategori barang</td>
+                    </tr>
+                    <tr>
+                        <td>Data Barang <span class="tag-enhanced">Ditingkatkan</span></td>
+                        <td>CRUD lengkap + kode barang otomatis + isi tanggal pengadaan dan umur ekonomis</td>
+                    </tr>
+                    <tr>
+                        <td>Barang Masuk</td>
+                        <td>Catat penerimaan stok baru, batalkan, hapus, ekspor laporan</td>
+                    </tr>
+                    <tr>
+                        <td>Barang Keluar</td>
+                        <td>Catat pengeluaran stok, batalkan, hapus, ekspor laporan</td>
+                    </tr>
+                    <tr>
+                        <td>Pengajuan Barang</td>
+                        <td>Buat, edit, hapus pengajuan pengadaan barang</td>
+                    </tr>
+                    <tr>
+                        <td>Perawatan Barang <span class="tag-new">Baru</span></td>
+                        <td>Catat kegiatan perawatan/perbaikan, edit status, hapus, ekspor laporan</td>
+                    </tr>
+                </table>
+                <div class="callout c-yellow" style="margin-top:12px">
+                    <b>🔒 Akses yang tidak ada untuk Staff</b>
+                    Manajemen Akun · Data Ruangan · Penggunaan Barang · Barang di Ruangan ·
+                    Riwayat · Pemindahan Aset · Laporan Analitis
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- 5. KEPALA SEKOLAH                          -->
+        <!-- ══════════════════════════════════════════ -->
+        <div id="kepsek" class="sec-header">
+            <div class="sec-icon">🏫</div>
+            <div>
+                <h2>Kepala Sekolah</h2>
+                <p>Pengawas & pengambil keputusan — akses baca semua data + wewenang persetujuan pengajuan</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-card-header">
+                <div class="fc-icon">📋</div>
+                <div>
+                    <div class="fc-title">Fitur yang Bisa Diakses Kepala Sekolah</div>
+                    <div class="fc-sub">Sebagian besar read-only dengan beberapa aksi eksklusif</div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <table class="rt">
+                    <tr>
+                        <th>Modul</th>
+                        <th>Yang Bisa Dilakukan</th>
+                    </tr>
+                    <tr>
+                        <td>Data Barang</td>
+                        <td>Lihat daftar + ekspor laporan. Tidak bisa tambah/edit/hapus.</td>
+                    </tr>
+                    <tr>
+                        <td>Data Ruangan</td>
+                        <td>Lihat daftar saja.</td>
+                    </tr>
+                    <tr>
+                        <td>Barang Masuk</td>
+                        <td>Lihat semua transaksi + ekspor laporan.</td>
+                    </tr>
+                    <tr>
+                        <td>Barang Keluar</td>
+                        <td>Lihat semua transaksi + ekspor laporan.</td>
+                    </tr>
+                    <tr>
+                        <td>Penggunaan Barang</td>
+                        <td>Lihat + ekspor laporan + lihat QR.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pengajuan Barang</strong> ⭐ Eksklusif</td>
+                        <td>
+                            <strong>Hanya Kepala Sekolah</strong> yang bisa mengubah status pengajuan:<br>
+                            <span class="pill p-green">✅ Setujui</span> &nbsp;
+                            <span class="pill p-red">❌ Tolak</span> &nbsp;
+                            <span class="pill p-yellow">↩️ Kembalikan ke Menunggu</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Barang di Ruangan + Kartu Inventaris <span class="tag-enhanced">Ditingkatkan</span></td>
+                        <td>Lihat detail per ruangan + cetak Kartu Inventaris Ruangan.</td>
+                    </tr>
+                    <tr>
+                        <td>Riwayat</td>
+                        <td>Lihat riwayat transaksi + ekspor laporan.</td>
+                    </tr>
+                    <tr>
+                        <td>Perawatan Barang <span class="tag-new">Baru</span></td>
+                        <td>Lihat semua catatan perawatan + ekspor laporan.</td>
+                    </tr>
+                    <tr>
+                        <td>Pemindahan Aset <span class="tag-new">Baru</span></td>
+                        <td>Lihat log pemindahan + ekspor laporan.</td>
+                    </tr>
+                    <tr>
+                        <td>Laporan Analitis (7 laporan) <span class="tag-new">Baru</span></td>
+                        <td>Akses penuh ke semua 7 laporan analitis (C1–C7).</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- 6. PENGGUNA                                -->
+        <!-- ══════════════════════════════════════════ -->
+        <div id="pengguna" class="sec-header">
+            <div class="sec-icon">👤</div>
+            <div>
+                <h2>Pengguna (Regular User)</h2>
+                <p>Akses terbatas — terutama bisa mengajukan pengadaan dan melihat inventaris ruangan</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-card-header">
+                <div class="fc-icon">📋</div>
+                <div>
+                    <div class="fc-title">Fitur yang Bisa Diakses Pengguna</div>
+                    <div class="fc-sub">Read-only untuk sebagian besar modul, penuh untuk pengajuan</div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <table class="rt">
+                    <tr>
+                        <th>Modul</th>
+                        <th>Yang Bisa Dilakukan</th>
+                    </tr>
+                    <tr>
+                        <td>Data Barang</td>
+                        <td>Lihat daftar barang + kode barang. Tidak bisa edit.</td>
+                    </tr>
+                    <tr>
+                        <td>Data Ruangan</td>
+                        <td>Lihat daftar ruangan saja.</td>
+                    </tr>
+                    <tr>
+                        <td>Barang Masuk</td>
+                        <td>Lihat daftar transaksi saja.</td>
+                    </tr>
+                    <tr>
+                        <td>Barang Keluar</td>
+                        <td>Lihat daftar transaksi saja.</td>
+                    </tr>
+                    <tr>
+                        <td>Penggunaan Barang</td>
+                        <td>Lihat daftar catatan penggunaan saja.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pengajuan Barang</strong> ⭐ Penuh</td>
+                        <td>Buat, edit, hapus pengajuan pengadaan barang milik sendiri + ekspor laporan.</td>
+                    </tr>
+                    <tr>
+                        <td>Barang di Ruangan + Kartu <span class="tag-enhanced">Ditingkatkan</span></td>
+                        <td>Lihat inventaris per ruangan + cetak Kartu Inventaris Ruangan.</td>
+                    </tr>
+                </table>
+                <div class="callout c-yellow" style="margin-top:12px">
+                    <b>🔒 Akses yang tidak ada untuk Pengguna</b>
+                    Manajemen Akun · Kategori · Edit Barang · Edit Ruangan ·
+                    Perawatan · Pemindahan · Analitik · Riwayat
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- 7. MATRIKS HAK AKSES                       -->
+        <!-- ══════════════════════════════════════════ -->
+        <div id="matriks" class="sec-header">
+            <div class="sec-icon">📋</div>
+            <div>
+                <h2>Matriks Lengkap Hak Akses</h2>
+                <p>Rangkuman semua modul vs semua peran dalam satu tabel</p>
+            </div>
+        </div>
+
+        <div class="master-table-wrap"
+            style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.06);overflow:hidden">
+            <table class="master-table">
+                <thead>
+                    <tr>
+                        <th style="min-width:240px">Modul / Fitur</th>
+                        <th>👑 Admin</th>
+                        <th>🧑‍💼 Staff</th>
+                        <th>🏫 Kepsek</th>
+                        <th>👤 Pengguna</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="sec-row">
+                        <td colspan="5">🔐 Autentikasi</td>
+                    </tr>
+                    <tr>
+                        <td>Login / Register / Logout</td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="check">✅</span></td>
+                    </tr>
+
+                    <tr class="sec-row">
+                        <td colspan="5">📊 Dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>Dashboard (semua grafik & rekap) <span class="tag-enhanced">Ditingkatkan</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="check">✅</span></td>
+                    </tr>
+
+                    <tr class="sec-row">
+                        <td colspan="5">👑 Khusus Administrator</td>
+                    </tr>
+                    <tr>
+                        <td>Manajemen Akun (CRUD + ganti sandi)</td>
+                        <td><span class="check">✅ Penuh</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+
+                    <tr class="sec-row">
+                        <td colspan="5">📦 Data Master</td>
+                    </tr>
+                    <tr>
+                        <td>Kategori Barang</td>
+                        <td><span class="check">✅ CRUD</span></td>
+                        <td><span class="check">✅ CRUD</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>Data Barang + Kode Unik <span class="tag-rev">B1</span></td>
+                        <td><span class="check">✅ CRUD + file</span></td>
+                        <td><span class="check">✅ CRUD + file</span></td>
+                        <td><span class="pill p-blue">👁 Lihat + file</span></td>
+                        <td><span class="pill p-blue">👁 Lihat</span></td>
+                    </tr>
+                    <tr>
+                        <td>Data Ruangan</td>
+                        <td><span class="check">✅ CRUD</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="pill p-blue">👁 Lihat</span></td>
+                        <td><span class="pill p-blue">👁 Lihat</span></td>
+                    </tr>
+
+                    <tr class="sec-row">
+                        <td colspan="5">🔄 Transaksi Barang</td>
+                    </tr>
+                    <tr>
+                        <td>Barang Masuk</td>
+                        <td><span class="check">✅ Penuh + file</span></td>
+                        <td><span class="check">✅ Penuh + file</span></td>
+                        <td><span class="pill p-blue">👁 Lihat + file</span></td>
+                        <td><span class="pill p-blue">👁 Lihat</span></td>
+                    </tr>
+                    <tr>
+                        <td>Barang Keluar</td>
+                        <td><span class="check">✅ Penuh + file</span></td>
+                        <td><span class="check">✅ Penuh + file</span></td>
+                        <td><span class="pill p-blue">👁 Lihat + file</span></td>
+                        <td><span class="pill p-blue">👁 Lihat</span></td>
+                    </tr>
+                    <tr>
+                        <td>Penggunaan Barang + QR</td>
+                        <td><span class="check">✅ Penuh + QR</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="pill p-blue">👁 Lihat + file</span></td>
+                        <td><span class="pill p-blue">👁 Lihat</span></td>
+                    </tr>
+
+                    <tr class="sec-row">
+                        <td colspan="5">📋 Pengajuan & Inventaris Ruangan</td>
+                    </tr>
+                    <tr>
+                        <td>Pengajuan — Buat/Edit/Hapus</td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="pill p-blue">👁 Lihat</span></td>
+                        <td><span class="check">✅</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pengajuan — Setujui/Tolak ⭐ Eksklusif</td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅ Eksklusif</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>Barang di Ruangan (detail)</td>
+                        <td><span class="check">✅ + kartu + print</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅ + kartu + print</span></td>
+                        <td><span class="check">✅ + kartu + print</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kartu Inventaris Ruangan <span class="tag-rev">B3</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="check">✅</span></td>
+                    </tr>
+                    <tr>
+                        <td>Riwayat Transaksi</td>
+                        <td><span class="check">✅ + file</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅ + file</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+
+                    <tr class="sec-row">
+                        <td colspan="5">🔧 Perawatan & Pemindahan (Fitur Revisi)</td>
+                    </tr>
+                    <tr>
+                        <td>Perawatan Barang <span class="tag-new">Baru · B2</span></td>
+                        <td><span class="check">✅ CRUD + file</span></td>
+                        <td><span class="check">✅ CRUD + file</span></td>
+                        <td><span class="pill p-blue">👁 Lihat + file</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pemindahan Aset <span class="tag-new">Baru · C6</span></td>
+                        <td><span class="check">✅ + hapus + file</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="pill p-blue">👁 Lihat + file</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+
+                    <tr class="sec-row">
+                        <td colspan="5">📊 Laporan Analitis (Semua Hasil Revisi)</td>
+                    </tr>
+                    <tr>
+                        <td>C1 — Umur Teknis Aset <span class="tag-rev">C1</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>C2 — Rekap Kerusakan <span class="tag-rev">C2</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>C3 — Pemanfaatan Aset (QR) <span class="tag-rev">C3</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>C4 — Barang Hilang/Tidak Ditemukan <span class="tag-rev">C4</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>C5 — Perbandingan Aset/Ruangan <span class="tag-rev">C5</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>C6 — Log Pemindahan (Analitik) <span class="tag-rev">C6</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>C7 — Riwayat Pindai QR Code <span class="tag-rev">C7</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                        <td><span class="check">✅</span></td>
+                        <td><span class="cross">—</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>📚 Panduan Lengkap Fitur — Sistem Informasi Inventaris SMAN 1 Jorong</p>
+        <p>🔶 Tanda <strong>Fitur Revisi</strong> menandai fitur yang ditambahkan berdasarkan catatan penguji skripsi
+        </p>
+    </footer>
+
+    <script>
+        function toggle(header) {
+            var body = header.nextElementSibling;
+            var arrow = header.querySelector('.toggle-arrow');
+            var isOpen = body.classList.contains('open');
+            body.classList.toggle('open', !isOpen);
+            arrow.classList.toggle('open', !isOpen);
+        }
+        // Auto-buka semua section saat halaman load
+        document.querySelectorAll('.role-body').forEach(function (b) {
+            b.classList.add('open');
+            var a = b.previousElementSibling.querySelector('.toggle-arrow');
+            if (a) a.classList.add('open');
+        });
+    </script>
+</body>
+
+</html>
